@@ -1,0 +1,14 @@
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\SimuladorSO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\SimuladorSO.AssemblyInfoInputs.cache
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\SimuladorSO.AssemblyInfo.cs
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\SimuladorSO.csproj.CoreCompileInputs.cache
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\bin\Debug\net8.0\SimuladorSO.exe
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\bin\Debug\net8.0\SimuladorSO.deps.json
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\bin\Debug\net8.0\SimuladorSO.runtimeconfig.json
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\bin\Debug\net8.0\SimuladorSO.dll
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\bin\Debug\net8.0\SimuladorSO.pdb
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\SimuladorSO.dll
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\refint\SimuladorSO.dll
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\SimuladorSO.pdb
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\SimuladorSO.genruntimeconfig.cache
+C:\Users\ujoao\OneDrive\Área de Trabalho\SimuladorSO\obj\Debug\net8.0\ref\SimuladorSO.dll
