@@ -8,7 +8,7 @@ escalonamento, gerenciamento de memória, operações de entrada/saída, coleta 
 
 ---
 
-## 🔹 Funcionalidades implementadas
+🔹 Funcionalidades implementadas
 
 1. **Processos e PCB**
 
@@ -74,30 +74,7 @@ escalonamento, gerenciamento de memória, operações de entrada/saída, coleta 
      * `--processos=N` (quantidade de processos iniciais)
      * `--molduras=N` (quantidade de molduras de memória)
 
----
-
-## 🔹 Estrutura de Arquivos
-
-* **Program.cs** → ponto de entrada, configura parâmetros e inicia a simulação.
-* **Processo.cs** → definição da classe Processo e PCB.
-* **ThreadSimulada.cs** → definição de threads simuladas (TCB).
-* **TabelaDeProcessos.cs** → lista de processos e utilidades.
-* **IEscalonador.cs** → interface dos escalonadores.
-* **EscalonadorFCFS.cs** → implementação do escalonador FCFS.
-* **EscalonadorRR.cs** → implementação do escalonador Round Robin.
-* **GerenciadorMemoria.cs** → gerência simples de memória.
-* **DispositivoIO.cs** → dispositivo de E/S com fila.
-* **Logger.cs** → gera logs com relógio de ticks.
-* **Metricas.cs** → coleta métricas globais.
-* **SistemaOperacional.cs** → núcleo do simulador, responsável por orquestrar tudo.
-
----
-
-## 🔹 Diagrama de Classes
-
-O sistema foi estruturado de forma modular. Abaixo está o diagrama de classes simplificado:
-
-## 🔹 Conclusão
+🔹 Conclusão
 
 Este simulador não é um SO real, mas cumpre o papel de **mostrar de forma prática como funcionam os conceitos fundamentais de Sistemas Operacionais**. 
 Ele pode ser facilmente estendido e serve como base para estudos acadêmicos.
