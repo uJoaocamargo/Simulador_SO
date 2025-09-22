@@ -1,4 +1,6 @@
-# Simulador de Sistema Operacional (Projeto Acadêmico)
+# Simulador de Sistema Operacional 
+Aluno João Victor Camargo RA: 113803, e Aluno Guilherme Belem RA: 114031
+
 
 Este projeto é um **simulador simplificado de Sistema Operacional**, desenvolvido em C# como exercício didático. 
 O objetivo é reproduzir, de forma básica, alguns dos conceitos principais de Sistemas Operacionais: criação de processos, 
