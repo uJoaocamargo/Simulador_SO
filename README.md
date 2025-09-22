@@ -1,80 +1,18 @@
 # Simulador de Sistema Operacional 
-Aluno João Victor Camargo RA: 113803, e Aluno Guilherme Belem RA: 114031
+Alunos João victor Camargo RA: 113803
+Guilherme Belem  RA: 114031
 
+Este projeto consiste em um simulador simplificado de Sistema Operacional desenvolvido em C#, com fins exclusivamente didáticos. O objetivo central é reproduzir de forma acessível os conceitos fundamentais de Sistemas Operacionais, tais como a criação e gerenciamento de processos, o funcionamento de diferentes algoritmos de escalonamento, a alocação de memória, a execução de operações de entrada e saída, além da coleta de métricas e a simulação do avanço do tempo no sistema.
 
-Este projeto é um **simulador simplificado de Sistema Operacional**, desenvolvido em C# como exercício didático. 
-O objetivo é reproduzir, de forma básica, alguns dos conceitos principais de Sistemas Operacionais: criação de processos, 
-escalonamento, gerenciamento de memória, operações de entrada/saída, coleta de métricas e simulação de execução no tempo.
+Cada processo do simulador é representado por um bloco de controle de processo (PCB) contendo identificador, nome, tempo de CPU restante, estado atual, prioridade, contador de programa, registradores simulados e uma tabela de arquivos abertos. Também são registradas informações individuais, como o tempo total de espera, o momento em que iniciou a execução e o instante em que foi finalizado. Para threads, o sistema conta com uma estrutura simples de TCB associada a cada processo, funcionando apenas como representação lógica, sem paralelismo real. Todos os processos criados ficam armazenados em uma tabela que permite buscas por ID e exibição da lista completa.
 
----
+O sistema possui dois algoritmos de escalonamento: FCFS (First Come First Served), que atende processos na ordem de chegada, e Round Robin, que distribui a CPU de forma circular com quantum configurável. A implementação utiliza uma interface que facilita a adição de novas políticas de escalonamento no futuro. O gerenciamento de memória é feito através de molduras, onde cada processo tenta ocupar uma moldura no momento da criação; caso não haja molduras disponíveis, o processo é criado, mas o sistema emite um aviso de falta de memória. Para a simulação de entrada e saída, há um dispositivo simples que mantém uma fila de espera. Durante a execução, existe a possibilidade de um processo solicitar operações de I/O e, quando finalizadas, retornar para a fila de prontos.
 
-🔹 Funcionalidades implementadas
+O simulador conta com um logger que registra cada evento relevante associado a um relógio lógico, exibindo os acontecimentos no formato `[t=...]`. São coletadas métricas globais como número de trocas de contexto e quantidade de ticks de CPU utilizados, além de métricas individuais de cada processo, incluindo tempos de espera, início de execução e término. O sistema pode ser configurado por meio de parâmetros passados na linha de comando, permitindo escolher o algoritmo de escalonamento, definir o quantum no caso do Round Robin, selecionar a semente para geração de números aleatórios, configurar a quantidade de processos iniciais e estabelecer o número de molduras de memória disponíveis.
 
-1. **Processos e PCB**
+O código foi organizado em diferentes arquivos, cada um responsável por uma parte do simulador: Program.cs contém o ponto de entrada, Processo.cs define a classe de processos e PCB, ThreadSimulada.cs implementa as threads, TabelaDeProcessos.cs mantém a lista de processos, IEscalonador.cs define a interface de escalonamento, EscalonadorFCFS.cs e EscalonadorRR.cs implementam as políticas de escalonamento, GerenciadorMemoria.cs cuida da memória, DispositivoIO.cs simula o dispositivo de entrada e saída, Logger.cs é responsável pelos registros de log, Metricas.cs coleta métricas do sistema e SistemaOperacional.cs integra todos os componentes, coordenando a execução da simulação.
 
-   * Cada processo possui um **PCB** (Process Control Block) com:
+A execução pode ser feita no Visual Studio 2022 através de um projeto de console, bastando inserir os arquivos, compilar e executar. É possível passar parâmetros de configuração diretamente no Visual Studio, na aba de propriedades do projeto, ou pelo terminal utilizando o comando `dotnet run` com as opções desejadas. O sistema foi estruturado de forma modular, respeitando princípios básicos de orientação a objetos e mantendo a simplicidade necessária para fins acadêmicos. Apesar de não ser um sistema operacional real, o simulador cumpre o papel de ilustrar de maneira prática os principais conceitos abordados em sala de aula e pode ser facilmente estendido com novas funcionalidades como substituição de páginas, múltiplas threads reais por processo, implementação de um sistema de arquivos e exportação de métricas para análise externa.
 
-     * ID
-     * Nome
-     * Tempo de CPU restante
-     * Estado (Criado, Pronto, Executando, Esperando, Finalizado)
-     * Prioridade
-     * Program Counter
-     * Registradores simulados (R0, R1, R2)
-     * Tabela de arquivos abertos
-   * Também são registradas métricas individuais: tempo de espera, início de execução e finalização.
+Assim, o projeto se apresenta como uma ferramenta de aprendizado que une teoria e prática, permitindo observar o funcionamento dos conceitos fundamentais de Sistemas Operacionais em um ambiente controlado e de fácil compreensão.
 
-2. **Threads (TCB simplificado)**
-
-   * Estrutura para threads simuladas ligadas a processos.
-   * Não há paralelismo real, apenas representação.
-
-3. **Tabela de Processos**
-
-   * Estrutura que mantém todos os processos criados.
-   * Permite busca por ID e exibição completa.
-
-4. **Escalonadores**
-
-   * **FCFS (First Come First Served)**: fila simples, executa processos na ordem de chegada.
-   * **Round Robin (RR)**: fila circular com quantum configurável.
-   * Interface `IEscalonador` permite expandir para outras políticas.
-
-5. **Gerenciador de Memória**
-
-   * Modelo baseado em molduras (frames).
-   * Cada processo tenta ocupar uma moldura.
-   * Caso não haja moldura disponível, o processo é criado mas marcado como sem alocação (mensagem exibida).
-
-6. **Entrada/Saída (E/S)**
-
-   * Dispositivo com fila de espera.
-   * Durante execução, há probabilidade de um processo solicitar E/S.
-   * Ao terminar E/S, retorna para o estado **Pronto**.
-
-7. **Logger com Relógio**
-
-   * Cada evento importante gera uma linha de log com o tempo (`[t=...]`).
-   * Facilita o rastreamento da execução.
-
-8. **Métricas**
-
-   * Número de trocas de contexto.
-   * Total de ticks de CPU utilizados.
-   * Tempo de espera por processo.
-   * Início e fim de execução de cada processo.
-
-9. **Interface de Linha de Comando (CLI)**
-
-   * Permite configurar parâmetros:
-
-     * `--escalonador=FCFS|RR`
-     * `--quantum=N` (para RR)
-     * `--seed=N` (semente para geração determinística)
-     * `--processos=N` (quantidade de processos iniciais)
-     * `--molduras=N` (quantidade de molduras de memória)
-
-🔹 Conclusão
-
-Este simulador não é um SO real, mas cumpre o papel de **mostrar de forma prática como funcionam os conceitos fundamentais de Sistemas Operacionais**. 
-Ele pode ser facilmente estendido e serve como base para estudos acadêmicos.
